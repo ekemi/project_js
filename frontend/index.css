@@ -19,3 +19,40 @@ table .btndelete{
     cursor: pointer;
     color: tomato;
 }
+
+.fa-check-circle {
+    color: green;
+    display: hidden;
+    visibility: hidden;
+    
+} 
+.fa-exclamation-circle{
+    color:tomato;
+    /* Make the message invisible */
+    visibility: hidden;
+}
+.control small{
+    visibility: hidden;
+}
+/* Have to create success class for the input to turn Green */
+.control.success input{
+ border-color: green;  
+ }
+
+ .control.error input{
+    border-color: tomato;
+ }
+
+.control.success i.fa-check-circle{
+    visibility: visible;
+    color: green;   
+}  
+/*
+}
+.control.success i.fa-exclamation-circle{
+    color:tomato;  
+    visibility: visible;
+}
+.control.error input{
+    border-color: tomato;   
+     }  */
