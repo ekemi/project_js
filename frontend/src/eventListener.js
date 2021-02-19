@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
-   Order.getOrders()
+   Customer.getOrders()
     
    
 })
