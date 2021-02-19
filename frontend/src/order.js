@@ -1,12 +1,12 @@
-class Order {
+// class Order {
 
-    constructor(id, product_name, seller,price) {
-        this.id = id;
-        this.product_name = product_name;
-        this.seller = seller;
-        this.price = price;
+//     constructor(id, product_name, seller,price) {
+//         this.id = id;
+//         this.product_name = product_name;
+//         this.seller = seller;
+//         this.price = price;
 
-    }
+//     }
 
 //     //check validation
 //       validation (object) {
@@ -35,7 +35,7 @@ class Order {
 
     
     
-    getOrder () {
+    // getOrder () {
     //input elements
         // const id = document.getElementById('user-id');
         // const proname = document.getElementById('proname');
@@ -46,9 +46,9 @@ class Order {
         // const btnUpdate = document.getElementById('btn-update');
         // const btnDelete = document.getElementById('btn-delete');
         // const btnRead = document.getElementById('btn-read');
-    }
+//     }
 
-}
+// }
 
 //check validation
 // const validation = object =>{

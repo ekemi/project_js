@@ -6,4 +6,11 @@ class Order {
        //Create a new order 
        jsonKeys.forEach(value=>this[value]= attr[value])
     }
+
+
+
+ //Fetch the orders
+ static getOrders() {
+     console.log('hello')
+ }
 }
