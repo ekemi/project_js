@@ -5,12 +5,15 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
 
-    render json: @orders
+    render json: OrderListSerializer.new(@orders).serializable_hash[:data].map{|hash| hash[:attributes]}
+    
   end
 
   # GET /orders/1
   def show
     render json: @order
+    # OrderSerializer.new(@orders).to_serialized_json
+    # @order
   end
 
   # POST /orders

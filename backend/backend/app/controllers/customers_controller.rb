@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   def index
     @customers = Customer.all
 
-    render json: @customers
+    render json: CustomerListSerializer.new(@customers).serializable_hash[:data].map{|hash| hash[:attributes]}
   end
 
   # GET /customers/1
