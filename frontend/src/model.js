@@ -29,11 +29,42 @@ class Customer {
      })
      .then(customerList=>{
          //Store the customer in the class
-         this.collectionCustomers = customerList.map(attrs=>new Customer(attrs))
-         this.renderCustomersList = this.collectionCustomers.map(attrs=> attrs.render())
+         this.collection = customerList.map(attrs=>new Customer(attrs))
+         this.renderCustomersList = this.collection.map(attrs=> attrs.render())
          this.container().append(...this.renderCustomersList)
          return this.collectionCustomers
-         debugger
+       
+     })
+ }
+ static create(){
+
+     const formData = {
+         name: document.getElementById('input').value
+     }
+      return fetch("http://127.0.0.1:3000/customers",{
+      method: 'POST', 
+     headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        //Converting the object to string
+        body: JSON.stringify({customer: formData})//just have name
+     }).then(resp=>{
+         if(resp.ok){
+             return resp.json()
+         }else{
+             return resp.text().then(error=>Promise.reject(error))
+         }
+     }).then(customerListAtt=>{
+         let customerList = new Customer(customerListAtt)
+         console.log(customerList)
+         this.collection.push(customerList)
+         //Putting in the DOM
+         this.container().appendChild(customerList.render())
+         return customerList;
+     })
+     .catch(error =>{
+         new FlashMessage({type: 'error', message: error})
      })
  }
 
@@ -61,4 +92,27 @@ static container () {
        this.element.append(this.nameLink,this.editLink,this.deleteLink )
        return this.element;
  }
+}
+
+class FlashMessage{
+    constructor({type, message}){
+        this.message = message
+        this.color = type=="error" ? 'bg-danger' : 'bg-light'
+        this.render()
+    }
+    static container () {
+        return this.c ||= document.querySelector('#flash')
+    }
+    render() {
+        // debugger
+       this.toggleMessage()
+       setTimeout(this.toggleMessage,1000)
+    }
+
+    toggleMessage() {
+        FlashMessage.container().textContent=this.message
+        FlashMessage.container().classList.toggle(this.color)
+        FlashMessage.container().classList.toggle('opacity')
+
+    }
 }

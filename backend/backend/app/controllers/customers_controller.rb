@@ -20,7 +20,8 @@ class CustomersController < ApplicationController
     if @customer.save
       render json: @customer, status: :created, location: @customer
     else
-      render json: @customer.errors, status: :unprocessable_entity
+      # if the name is empty display the full message
+      render json: @customer.errors.full_messages.to_sentence, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +47,7 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.require(:customer).permit(:name, :username, :email)
+      params.require(:customer).permit(:name)
+      # , :username, :email)
     end
 end

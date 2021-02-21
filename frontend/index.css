@@ -56,3 +56,7 @@ table .btndelete{
 .control.error input{
     border-color: tomato;   
      }  */
+
+.opacity {
+    opacity: 0;
+}
