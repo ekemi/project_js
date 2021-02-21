@@ -61,6 +61,7 @@ class Customer {
          this.collection.push(customerList)
          //Putting in the DOM
          this.container().appendChild(customerList.render())
+         new FlashMessage({type:'success', message: 'New message added'})
          return customerList;
      })
      .catch(error =>{
@@ -106,7 +107,7 @@ class FlashMessage{
     render() {
         // debugger
        this.toggleMessage()
-       setTimeout(this.toggleMessage,1000)
+       setTimeout(this.toggleMessage.bind(this),1000)
     }
 
     toggleMessage() {
