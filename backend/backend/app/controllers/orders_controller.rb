@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       render json: @order
     else
-      render json: @order.errors, status: :unprocessable_entity
+      render json: {@order.errors.full_message}, status: :unprocessable_entity
     end
   end
 

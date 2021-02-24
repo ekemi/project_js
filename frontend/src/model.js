@@ -7,7 +7,34 @@ class Customer {
        jsonKeys.forEach(value=>this[value]= attr[value])
     }
 
+//Customer.findById return customer thatmatches the ID
+// Customer {id: 1, name: "Ziac", element: li, nameLink: a.selectCustomer, editLink: a, …}
+static findById(id){
+    return this.collection.find(customerList => customerList.id==id)
 
+}
+
+ show() {
+    fetch(`http://127.0.0.1:3000/customers/${this.id}`,{
+        method: 'GET',
+        headers:{
+            "Accept": "application/json",
+            "content-Type":"application/json"
+        }
+    })
+    .then(res=>{
+        if (res.ok){
+            return res.json()
+        }else {
+            return res.text().then(error=>Promise.reject(error))
+        }
+    })
+    .then(data=>{
+        debugger
+
+    })
+
+}
 
  //Fetch the orders
  static getOrders() {
@@ -82,8 +109,10 @@ static container () {
      //this.element.class ="classe names"
      this.nameLink ||= document.createElement('a')
       //this.nameLink.classList.add(..."fas fa-edit btnedit".split(" "))
+      this.nameLink.classList.add('selectCustomer')
        this.nameLink.textContent= this.name;
-       
+       // add dataset
+       this.nameLink.dataset.customerId = this.id
        this.editLink  ||=  document.createElement('a') 
        //this.nameLink.class ="classe names"
        this.editLink.innerHTML = `<i class="fas fa-edit btnedit">`
