@@ -5,7 +5,8 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
 
-    render json: OrderListSerializer.new(@orders).serializable_hash[:data].map{|hash| hash[:attributes]}
+    render json: @orders
+    # OrderListSerializer.new(@orders).serializable_hash[:data].map{|hash| hash[:attributes]}
     
   end
 
@@ -32,7 +33,7 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       render json: @order
     else
-      render json: {@order.errors.full_message}, status: :unprocessable_entity
+      render json: @order.errors.full_message, status: :unprocessable_entity
     end
   end
 
