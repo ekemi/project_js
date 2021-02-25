@@ -9,32 +9,36 @@ class Customer {
 
 // //Customer.findById return customer thatmatches the ID
 // // Customer {id: 1, name: "Ziac", element: li, nameLink: a.selectCustomer, editLink: a, …}
-// static findById(id){
-//     return this.collection.find(customerList => customerList.id==id)
+static findById(id){
+    return this.collection.find(customerList => customerList.id==id)
 
-// }
+ }
 
-//  show() {
-//     fetch(`http://127.0.0.1:3000/customers/${this.id}`,{
-//         method: 'GET',
-//         headers:{
-//             "Accept": "application/json",
-//             "content-Type":"application/json"
-//         }
-//     })
-//     .then(res=>{
-//         if (res.ok){
-//             return res.json()
-//         }else {
-//             return res.text().then(error=>Promise.reject(error))
-//         }
-//     })
-//     .then(data=>{
-//         debugger
+ show() {
+    fetch(`http://127.0.0.1:3000/customers/${this.id}`,{
+        method: 'GET',
+        headers:{
+            "Accept": "application/json",
+            "content-Type":"application/json"
+        }
+    })
+    .then(res=>{
+        if (res.ok){
+            return res.json()
+        }else {
+            return res.text().then(error=>Promise.reject(error))
+        }
+    })
+    //data={id, name}
+    .then(({id, taskAttributes})=>{
 
-//     })
+        // Order.loadbyList(id,taskAttributes)
 
-// }
+        debugger
+
+    })
+
+}
 
 //  //Fetch the orders
    static getCustomers() {
@@ -67,38 +71,38 @@ class Customer {
        
      })
  }
-//  static create(){
+ static create(){
 
-//      const formData = {
-//          name: document.getElementById('input').value
-//      }
-//       return fetch("http://127.0.0.1:3000/customers",{
-//       method: 'POST', 
-//      headers: {
-//             "Accept": "application/json",
-//             "Content-Type": "application/json"
-//         },
-//         //Converting the object to string
-//         body: JSON.stringify({customer: formData})//just have name
-//      }).then(resp=>{
-//          if(resp.ok){
-//              return resp.json()
-//          }else{
-//              return resp.text().then(error=>Promise.reject(error))
-//          }
-//      }).then(customerListAtt=>{
-//          let customerList = new Customer(customerListAtt)
-//          console.log(customerList)
-//          this.collection.push(customerList)
-//          //Putting in the DOM
-//          this.container().appendChild(customerList.render())
-//          new FlashMessage({type:'success', message: 'New message added'})
-//          return customerList;
-//      })
-//      .catch(error =>{
-//          new FlashMessage({type: 'error', message: error})
-//      })
-//  }
+     const formData = {
+         name: document.getElementById('input').value
+     }
+      return fetch("http://127.0.0.1:3000/customers",{
+      method: 'POST', 
+     headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        //Converting the object to string
+        body: JSON.stringify({customer: formData})//just have name
+     }).then(resp=>{
+         if(resp.ok){
+             return resp.json()
+         }else{
+             return resp.text().then(error=>Promise.reject(error))
+         }
+     }).then(customerListAtt=>{
+         let customerList = new Customer(customerListAtt)
+         console.log(customerList)
+         this.collection.push(customerList)
+         //Putting in the DOM
+         this.container().appendChild(customerList.render())
+          new FlashMessage({type:'success', message: 'New message added'})
+         return customerList;
+     })
+     .catch(error =>{
+          new FlashMessage({type: 'error', message: error})
+     })
+ }
 
 // //  <li><a href="#" target="_blank">List</a></li>
 // //  <li><a href="#" target="_blank">List</a></li>
@@ -108,6 +112,8 @@ static container () {
    return this.c ||=document.querySelector('#list')
 }
 
+
+
  render () {
      this.ul ||= document.createElement('ul')
      this.element ||=document.createElement('li');
@@ -116,7 +122,7 @@ static container () {
       //this.nameLink.classList.add(..."fas fa-edit btnedit".split(" "))
       this.nameLink.classList.add('selectCustomer')
        this.nameLink.textContent= this.name;
-       // add dataset
+       // add dataset to get the id of the customer
        this.nameLink.dataset.customerId = this.id
        this.editLink  ||=  document.createElement('a') 
        //this.nameLink.class ="classe names"
@@ -129,26 +135,52 @@ static container () {
        return this.ul;
  }
 
+}
 
-// class FlashMessage{
-//     constructor({type, message}){
-//         this.message = message
-//         this.color = type=="error" ? 'bg-danger' : 'bg-light'
-//         this.render()
-//     }
-//     static container () {
-//         return this.c ||= document.querySelector('#flash')
-//     }
-//     render() {
-//         // debugger
-//        this.toggleMessage()
-//        setTimeout(this.toggleMessage.bind(this),1000)
-//     }
 
-//     toggleMessage() {
-//         FlashMessage.container().textContent=this.message
-//         FlashMessage.container().classList.toggle(this.color)
-//         FlashMessage.container().classList.toggle('opacity')
 
-//     }
+
+class Order{
+
+constructor(attributes){
+    let list = ["id","product_name","seller","price"]
+    list.forEach(attr=>this[attr]=attributes)
+
+}
+
+static container() {
+    return this.c=querySelector("#task")
+}
+static loadByList(id , taskAttributes){
+
+    Order.name_customer_id =id
+    let orders = taskAttributes.map(taskAttribute=> new Order(taskAttribute))
+    let rendered = tasks.map(task=>task.render())
+    this.container(...rendered)
+} 
+
+}
+
+
+class FlashMessage{
+    constructor({type, message}){
+        this.message = message
+        this.color = type=="error" ? 'bg-danger' : 'bg-light'
+        this.render()
+    }
+    static container () {
+        return this.c ||= document.querySelector('#flash')
+    }
+    render() {
+        // debugger
+       this.toggleMessage()
+       setTimeout(this.toggleMessage.bind(this),1000)
+    }
+
+    toggleMessage() {
+        FlashMessage.container().textContent=this.message
+        FlashMessage.container().classList.toggle(this.color)
+        FlashMessage.container().classList.toggle('opacity')
+
+    }
 }
