@@ -9,6 +9,137 @@ class Customer {
 
     }
 
+    //Create an order is object
+    addChore (order){
+        let c = new order(order.product_name, order.seller,order.price)
+        this.order.push(c)
+    }
+    //Add the order to the DOM
+    //sort is an array function
+    renderChore() {
+        let orderSortedByName = this.order.sort((a,b)=>(a.product_name >b.product_name)? 1:-1)
+        orderSortedByName.forEach(data=>{
+            data.render()
+        })
+    }
+
+    static postHouseHold (dataObj) {
+
+        let formData = {
+            "name" : dataObj.name.value
+        }
+        let config = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'content-Type': 'application/json'
+            }, body: JSON.stringify(formData)
+
+            }
+            return fetch(Api.House_HOLD_URL,config)
+            .then(res=>res.json())
+            .then(data=>{
+                let newCustomer = new Customer(data.id,data.name)
+                return newCustomer
+            })
+            .then(clearNewHouseForm)
+            .then(clearFamilyDD)
+            .then(clearNewChore)
+            .then(Customer.renderDropDownOptions)
+            .then(Customer.renderHouseHolds)
+        }
+
+        static renderDropDownOptions() {
+            Customer.all.forEach(data=>{
+                let option = document.createElement('option')
+                option.setAttribute('value', data.id)
+                let customerName = document.createTextNode(data.name)
+                option.appendChild(customerName)
+                //UNKNOWN
+                selectHouseHold.appendChild(option)
+
+            })
+        }
+
+        static renderHouseHolds() {
+            Customer.all.forEach(data=>{
+                let option = document.createElement('option')
+                option.value = data.id
+                option.textContent = data.name
+                //UNKNOWN
+                select.appendChild(option)
+           
+
+        })
+    }
+}
+
+
+class Order {
+    static all =[]
+
+    constructor(product_name,price,seller ,status="Not delivered",id){
+        this.product_name=product_name;
+        this.seller=seller;
+        this.id=id;
+        Order.all.push(this)
+
+    }
+
+    static postChore(orderData) {
+        let formData = {
+            "product_name": orderData.product_name.value,
+            
+            "price": orderData.price.value,
+            "seller":orderData.seller.value,
+            "status":orderData.status ="Incomplete",
+            'customerOrderId': orderData.querySelector('select').value
+        }
+
+        let config = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'content-Type': 'application/json'
+            }, body: JSON.stringify(formData)
+
+    }
+
+    return fetch(Api.CHORE_URL, config)
+    .then(res=>res.json())
+    .then(data=>{
+        let customer = Customer.all.find(chosenCustomer=>data.customerOrderId==chosenCustomer.id)
+        let newOrder = new Order(data.product_name , data.price, data.seller , data.status ,data.id)
+        //Unknown chores 
+        customer.chores.push(newOrder)
+        clearChoreDivs()
+        customer.renderChores()
+        clearForm()
+    })
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //     constructor(attr){
 //         // Info from the keys from the JSON API
 //        let  jsonKeys = [ "id", "name"]
@@ -192,7 +323,7 @@ class Customer {
 //         FlashMessage.container().classList.toggle('opacity')
 
 //     }
-}
+
 
 p = new Customer(1,"papa")
 
