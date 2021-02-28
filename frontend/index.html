@@ -27,21 +27,21 @@
 </head>
 <body>
   
-<section id="flash" class=" opacity py-4 text-info"></section>
+ <!-- <section id="flash" class=" opacity py-4 text-info"></section>
 
-<span class="card task">
+ <span class="card task">
     
     
-</span>
+</span> --> 
 
-  <div class="customer-list" id="list">
+  <!-- <div class="customer-list" id="list">
     <form id="customer-lists">
       <input type="text" id ="input" name="name">
       <input type="submit">
     </form>
-  
+    -->
   <!-- <div id="list"></div> -->
-  </div>
+  <!-- </div> -->
   
   
   <!-- <main>
@@ -93,6 +93,51 @@ t
 
 <script src="src/order.js"></script>
 <script src="index.js"></script>
+
+
+<div id="family-function-header"> 
+
+  <!-- Image -->
+</div> <br>
+
+<h6 id="tag-line">The place order</h6>
+
+<div class="family-selector">
+  <form class="select-family-form" style="border: 0;">
+  <h6>Select your Name</h6>
+  <select id="family-select"></select>
+  <input type="submit" name="submit" value=" Se your Order" class="submit">
+  </form>
+</div>
+<button id="all-house-options"></button>
+
+
+<div class="container">
+
+ <form class="add-chore-form" style="border: 0;">
+  <h6>Add an Order to your List</h6>
+  <input type="text" name="name" value="" placeholder="Enter an order name" class="input-text">
+  <select id="select"></select>
+  <input type="submit" name="submit" value="Save an Order" class="submit">
+</form>
+
+</div>
+<br><br>
+<button id="new-chore-btn" style="text-align: center;"></button>
+<div id="house-pop-up">
+  <form class="add-house-hold-form" style="border: 0;">
+       <h6>Create a new Customer</h6>
+       <br>
+       <label for="name"> Customer Name:</label>
+       <input type="text" name="name" class="house-hold-input-text">  
+       <br>
+       <input class="submit-form" type="submit" value="Save Customer" class="submit">
+  </form>
+</div>
+<button id="add-new-family"></button>
+<div id="chore-collection">
+  <h6 id="family-chore-list"> Customer's Order:</h6>
+</div>
 
 </body>
 </html>
