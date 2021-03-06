@@ -1,249 +1,203 @@
-/* .d-flex input{
-    margin: .9em 0em;
-}
+html {
+    font-family: "Titillium Web", sans-serif;
+  }
 
-.d-flex button{
-    margin:1.5em .6em;
-    padding: .3em 2.4em;
-}
-.container table{
-    margin: 1em 10em;
-}
+  body {
+      background-image: linear-gradient(to right, steelblue, grey);
+  }
+ 
 
-table .btnedit{
-    color: green;
-    cursor: pointer;
-} */
+.container {
+  box-shadow: 3px 4px skyblue;
+  border-radius: 6px 16px;
+  padding: 1rem;
+  width: 420px;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+  margin: 1rem 2rem;
+  text-shadow: 1px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
+  }
 
-/* table .btndelete{
-    cursor: pointer;
-    color: tomato;
-} */
+ #house-pop-up {
+  border-radius: 6px 16px;
+  padding: 1rem;
+  width: 420px;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+  box-shadow: 3px 4px skyblue;
+  margin: 1rem 2rem;
+  text-shadow: 1px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
+ } 
 
-/* .fa-check-circle {
-    color: green;
-    display: hidden;
-    visibility: hidden;
-    
-}  */
-/* .fa-exclamation-circle{
-    color:tomato; */
-    /* Make the message invisible */
-    /* visibility: hidden;
-} */
-/* .control small{
-    visibility: hidden;
-} */
-/* Have to create success class for the input to turn Green */
-/* .control.success input{
- border-color: green;  
- } */
-/* 
- .control.error input{
-    border-color: tomato;
+ .family-selector {
+  border-radius: 6px 16px;
+  padding: 1rem;
+  width: 420px;
+  height: auto;
+  display: none;
+  background: whitesmoke;
+  opacity: .8;
+  box-shadow: 3px 4px skyblue;
+  margin: 1rem 2rem;
+  text-shadow: .5px .5px skyblue;
+  color: darkslategray;
+  font-family: Georgia, serif;
  }
 
-.control.success i.fa-check-circle{
-    visibility: visible;
-    color: green;   
-}   */
-/*
-}
-.control.success i.fa-exclamation-circle{
-    color:tomato;  
-    visibility: visible;
-}
-.control.error input{
-    border-color: tomato;   
-     }  */
-/* 
-.opacity {
-    opacity: 0;
-} */
-
-
-/* header {
-    background-color: #ff8b31;
-    border-radius: 10px;
-    padding: 10px;
+  .card {
+    border-radius: 15px 40px;
     text-align: center;
-    box-shadow: 0 0 10px 2px;
-
-    margin: 0 auto;
-    height: 120px;
-    max-height: 40%;
-    max-width: 70%;
-}
-
-body {
-    background-color: #0007e7;
-    margin: 70px;
+    border: grey solid 2px;
     padding: 20px;
-    font-family: Helvetica;
-}
-
-h1 {
-    background-color: #ff8b31;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0;
-    font-family: Bahnschrift SemiBold;
-}
-
-h3 {
-    background-color: #ff8b31;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0;
-    font-family: Calibri Light;
-}
-
-form input, textarea {
-    background-color: #ffffff;
-    font-size: 1.00em;
-
-}
-div.card {
-    background-color: #dbdbdb;
-    box-shadow: 0 0 10px 2px;
-    padding: 10px 5px 10px 5px;
-    border-radius: 5px;
-    margin: 20px;
-}
-
-li {
-    font-size: 1.00em;
-    list-style: none;
-    padding-right: 20px;
-}
-
-.button {
-    padding: 15px 25px;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color:#01d300;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-}
-
-.button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 2px #666;
-    transform: translateY(4px);
-}
-
-.add-item-button {
-    color: white;
-    background-color:#01d300;
-    border-radius: 15px;
-    box-shadow: 0 3px #999;
-    outline: none;
-    border: none;
-}
-
-.add-item-button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-}
-
-.view-items-category-button {
-    background-color:#198fff;
-    border-radius: 20px;
-    box-shadow: 0 3px #999;
-    color:white;
-    padding: 8px 8px;
-    outline: none;
-    border: none;
-}
-
-.view-items-category-button:active {
-    background-color: #1954a8;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-}
-
-.edit-category-button {
-    background-color: #ff4892;
-    border-radius: 20px;
-    box-shadow: 0 3px #999;
-    color:white;
-    padding: 8px 8px;
-    outline: none;
-    border: none;
-}
-
-.edit-category-button:active {
-    background-color: #b73b5b;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-}
-
-.delete-category-button {
-    background-color: red;
-    border-radius: 20px;
-    box-shadow: 0 3px #999;
-    color:white;
-    padding: 8px 8px;
-    outline: none;
-    border: none;
-}
-
-.delete-category-button:active {
-    background-color: #a80000;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-}
-
-.delete-item-button {
-    color: white;
-    background-color: red;
-    border-radius: 15px;
-    box-shadow: 0 3px #999;
-    outline: none;
-    border: none;
-}
-
-.delete-item-button:active {
-    background-color: #ac0000;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-}
-
-.submit-new-item {
-    background-color: orange;
-    border-radius: 20px;
-    box-shadow: 0 3px #999;
-    color:white;
-    padding: 8px 8px;
-    outline: none;
-    border: none;
-}
-
-.submit-new-item:active {
-    background-color: #a36800;
-    box-shadow: 0 0px #666;
-    transform: translateY(4px);
-} */
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    /* width: 40%; */
-    position: relative;
     width: 200px;
-    height: 200px;
-    border: 3px solid red;
-    
+    height: auto;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px skyblue;
+    background-color: whitesmoke;
+    font-family: Georgia, serif;
+  }
+
+  
+
+  .chore-status {
+      font-size: larger;
+      font-family: Georgia, serif;
+  }
+
+  .add-chore-form {
+    width: 80%;
+    font-family: Georgia, serif;
+  }
+
+
+  .complete-btn {
+    background-color: skyblue;
+    border-radius: 3px 8px;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+  }
+
+  .reset-chore-button {
+    background-color: #9494b8;
+    border-radius: 3px 8px;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+        
+    }
+
+  .delete-chore-btn {
+    background-color: lightsteelblue;
+    border-radius: 3px 8px;
+    color: whitesmoke;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+  }
+
+  #add-new-family{
+    border-radius: 3px 8px;
+    border: grey solid 2px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #add-new-family button {
+    color: darkslategray;
+    background: whitesmoke;
+  }
+
+  #new-chore-btn {
+    border-radius: 3px 8px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    border: 2px;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #all-house-options {
+    border-radius: 3px 8px;
+    font-size: 24px;
+    height: auto;
+    width: auto;
+    border: #9494b8;
+    border: 2px;
+    background: whitesmoke;
+    box-shadow: 3px 4px skyblue;
+    padding: 12px 28px;
+    margin-left: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: darkslategray;
+    font-family: Georgia, serif;
+  }
+
+  #tag-line {
+    text-align: center;
+    text-shadow: 2px 2px navy;
+    color: aqua;
+    font-family: Georgia, serif;
+    opacity: .5;
+    font-size: 24px;
+  }
+
+  #family-chore-list {
+    text-align: center;
+    text-shadow: 2px 2px navy;
+    color: aqua;
+    font-family: Georgia, serif;
+    opacity: .5;
+    font-size: 28px;
+  }
+
+  #submit-form {
+    border-radius: 3px 8px;
   }
   
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  .container {
-    padding: 2px 16px;
-  }

@@ -1,132 +1,122 @@
-// The brain of the app
 
-// document.addEventListener('DOMContentLoaded', ()=>{
+// function clearFamilyDD(){
+//     document.querySelector("#family-select").innerHTML = ""
+// }
+// function clearForm() {
+//     document.querySelector(".input-text").value = ""
+// }
 
-//     // Customer.getOrders()
-//     console.log('loaded')
-//     debugger
-//      fetchCustomers()
-    
-//  })
+// function clearNewHouseForm() {
+//     document.querySelector('.house-hold-input-text').value = ""
+//     document.querySelector('.house-members-input-text').value  = ""
+// }
 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     fecthOrders()
-//     insertOrder()
-    
-    
-   
+function clearOrderDivs(){
+    orderCollection.innerHTML = ""
+}
+
+// function clearNewChore() {
+//     document.querySelector("#select").innerHTML = ""  
+// }
+
+// addHouseHoldBtn.addEventListener('click', () => {
+//     addHouseHold = !addHouseHold
+//     if (addHouseHold){
+//         addHouseHoldBtn.textContent = "Close"
+//         housePopUp.style.display = 'block'
+//         housePopUp.addEventListener('submit', e => {
+//             e.preventDefault()
+//             HouseHold.postHouseHold(e.target)
+//        })
+//     } else {
+//         addHouseHoldBtn.textContent = "Add a New House Hold"
+//         housePopUp.style.display = 'none'
+//     }
 // })
 
-// const url = "http://127.0.0.1:3000"
-
-//     //Read - fetch all the orders
-    // fecthCustomers =()=> {
-    //  fetch ("http://127.0.0.1:3000/customers")
-     //Getting an response and added .json() to jsonify
-    //  .then(resp =>resp.json())
-     //Resolve the Promise and extra the Data
-    //  .then(customerObject =>{
-         //for..of to iterate over an arrow of objects
-         // const order is rails object
-        //  for(const order of orders){
-        //      console.log(order)
-//              //Create an object order by calling a constructor function
-//              //orderObject is object in js
-//              let orderObject = new Order(order.id, order.product_name, order.seller,order.price)
-//              console.log(orderObject)
-             
-//          }
-//      })
-//     }
-
-//     //check validation
-//     // const validation = ()=> {
-//     //     const proname = document.getElementById('proname');
-//     //     const seller = document.getElementById('seller');
-//     //     const price = document.getElementById('price');
-//     //     if(proname.value.trim()===""){
-//     //         // setErrorMessage(proname,"Need a Product Name")
-//     //         console.log('bad')
-           
+//2 evenement
+// selectHouseHoldBtn.addEventListener('click', () => {
+//     selectCustomer = !selectCustomer
+//     if(selectCustomer) {
+//         selectHouseHoldBtn.textContent= 'Close'
+//         selectForm.style.display = 'block'
+//         selectForm.addEventListener('submit', e => {
+//             e.preventDefault()
+//             let customerId = e.target.querySelector('#family-select').value
             
-//     //     } else if(seller.value.trim()===""){
-//     //         console.log("error") 
-//     //     }else if (price.value.trim()===""){
-//     //         console.log("error")
-//     //     }
-       
-
-//     // }
-
-
-
-
-//     //check validation
-// const validation = object =>{
-//     let flag = false;
-//     for(const value in object){
-//         if(object[value]!=""&& object.hasOwnProperty(value)){
-//             flag = true;
-//         }else {
-//             flag = false;
-//         }
-//     }
-//     return flag;
-// }
-
-// // }
-//     //Error handling 
-//     // input, message
-//     // const setErrorMessage = (input, message) =>{
-//     //     const control = input.parentElement;
-//     //     const small = control.querySelector('small')
-     
-//     //     // const small = control.querySelector('small')
-//     //     // //Add a message
-//     //      small.innerHTML = message
-//     //       console.log(small)
-//     //     // //Add the class success
-//     //     control.className = "control success"
-        
-
-//     // }
-
-//         // const proname = document.getElementById('proname');
-//         // const seller = document.getElementById('seller');
-//         // const price = document.getElementById('price');
-//     const insertOrder=()=> {
-//         const proname = document.getElementById('proname');
-//         const seller = document.getElementById('seller');
-//         const price = document.getElementById('price');
-//          btnCreate = document.getElementById("btn-create");
-// console.log(proname)
-//         // this.btnCreate = document.getElementById("btn-create")
-//         // btnCreate.addEventListener('click',validation({
-//         //     productName:proname.value,
-//         //     seller:seller.value,
-//         //     price:price.value
-//         // }));
-
-//     }
-
-
-
-//     //Update an order
-
-//     //Create an order
-
-
-//     //Delete an order
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     getCategories();
-//     Customer.newCategoryForm()
-// });
-
-// function toggleHideDisplay(element) {
-//     if (element.style.display === "none") {
-//         element.style.display = "block"
+//             let chosenCustomer = Customer.all.find(chosenCustomer => customerId == chosenCustomer.id)
+//             clearChoreDivs()
+            
+//             chosenCustomer.renderOrders()
+//         })
 //     } else {
-//         element.style.display = "none"
+//         selectHouseHoldBtn.textContent = "Select Your Family"
+//         selectForm.style.display = 'none'
 //     }
-// }
+// })
+
+
+selectHouseHoldBtn.addEventListener('click', () => {
+    selectHouse = !selectHouse
+   if(selectHouse) {
+       selectHouseHoldBtn.textContent= 'Close'
+       selectForm.style.display = 'block'
+       selectForm.addEventListener('submit', e => {
+           e.preventDefault()
+           let customerId = e.target.querySelector('#family-select').value
+           
+           let chosenCustomer = Customer.all.find(chosenCustomer => customerId == chosenCustomer.id)
+           clearOrderDivs()
+           
+           chosenCustomer.renderChores()
+       })
+   } else {
+       selectHouseHoldBtn.textContent = "Select Your Family"
+       selectForm.style.display = 'none'
+   }
+})
+
+// addBtn.addEventListener('click', () => {
+
+//     //hide and seek feature with add new chore form
+//     addChore = !addChore
+//     if (addChore) {
+//         addBtn.textContent = 'Close'
+//         choreForm.style.display = 'block'
+//         choreForm.addEventListener('submit', e => {
+//             e.preventDefault()
+//             Order.postChore(e.target)
+//         })
+        
+        
+//     } else {
+//         addBtn.textContent = "Add a New Chore!"
+//         choreForm.style.display = 'none'
+//     }
+// })
+
+    
+//Beginning***********************************
+document.addEventListener("DOMContentLoaded", () => {
+    Api.fetchCustomers().then(customers => {
+        customers.forEach(customer => {
+            let cus = new Customer(customer.name, customer.id)
+            customer.orders.forEach(order => {
+                //find it to customer class
+            cus.addOrder(order)
+            })
+        })
+    Customer.renderCustomers()
+    Customer.renderDropDownOptions()
+    })
+    //I did add the word
+    addBtn.textContent = 'Add a New Order'
+    // I did add the word
+    addHouseHoldBtn.textContent = "Add a New Customer"
+    // I did add the word
+    selectHouseHoldBtn.textContent = 'Select Your Customer'
+    
+})
+
+
+

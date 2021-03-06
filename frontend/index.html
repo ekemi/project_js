@@ -87,18 +87,18 @@ t
 <script src="src/eventListener.js"></script> -->
 
 
-<script src="src/customer.js"></script>
+<!-- <script src="src/customer.js"></script>
 <script src="src/model.js"></script>
 <script src="src/eventListener.js"></script>
 
 <script src="src/order.js"></script>
-<script src="index.js"></script>
+<script src="index.js"></script> -->
 
-
+<!-- 
 <div id="family-function-header"> 
 
-  <!-- Image -->
-</div> <br>
+   Image -->
+<!-- </div> <br>
 
 <h6 id="tag-line">The place order</h6>
 
@@ -109,10 +109,10 @@ t
   <input type="submit" name="submit" value=" Se your Order" class="submit">
   </form>
 </div>
-<button id="all-house-options"></button>
+<button id="all-house-options"></button> -->
 
 
-<div class="container">
+<!-- <div class="container">
 
  <form class="add-chore-form" style="border: 0;">
   <h6>Add an Order to your List</h6>
@@ -123,8 +123,9 @@ t
 
 </div>
 <br><br>
-<button id="new-chore-btn" style="text-align: center;"></button>
-<div id="house-pop-up">
+<button id="new-chore-btn" style="text-align: center;"></button> -->
+
+<!-- <div id="house-pop-up">
   <form class="add-house-hold-form" style="border: 0;">
        <h6>Create a new Customer</h6>
        <br>
@@ -134,106 +135,72 @@ t
        <input class="submit-form" type="submit" value="Save Customer" class="submit">
   </form>
 </div>
+
 <button id="add-new-family"></button>
 <div id="chore-collection">
   <h6 id="family-chore-list"> Customer's Order:</h6>
+</div> --> 
+<h3 id='tag-line'>Order placer</h3>
+<div class="family-selector">
+  <form class="select-family-form" style="">
+      <h3>Select Your Family(Customer)</h3>
+  <select id="family-select">
+
+  </select>
+  <input type="submit" name="submit" value="See Your order" class="submit">
+</form>
 </div>
+<button id="all-house-options"></button>
+
+<div class="container">
+  <form class="add-chore-form" style="">
+      <h3> Add a order to your To-Do List</h3>
+
+      <input type="text" name="product_name" value="" placeholder="Enter a order's name..." class="input-text">
+     
+      <select id="select">
+          
+      </select>
+
+      <input type="submit" name="submit" value="Save order name" class="submit">
+  
+  </form>
+</div>
+<br>
+<br>
+<button id='new-chore-btn' style='text-align:center'></button></p>
+
+<div id='house-pop-up'>
+  <form class="add-house-hold-form" style="">
+          <h3>Create new customer </h3>
+          <label for="house-hold">Customer Name:</label>
+          <br>
+          <input type="text" name="name" value="" placeholder="Stark..." class="house-hold-input-text">
+          <br>
+          <input class="submit-form" type="submit" name="submit" value="Save House Hold" class="submit">
+      </form>
+  </div>
+  
+  <button id="add-new-family"></button>
+
+<div id="chore-collection">
+ <h2 id='family-chore-list'>House Hold Chores:</h2>
+</div>
+
+
+
+<script src="src/customer.js"></script>
+<script src="src/model.js"></script>
+<script src="src/eventListener.js"></script>
+
+<script src="src/order.js"></script>
+<script src="src/api.js"></script>
+<script src="src/variable.js"></script>
+<script src="index.js"></script>
 
 </body>
 </html>
-<!-- <script src="src/customer.js"></script>
-    <script src="src/model.js"></script>
-    <script src="src/eventListener.js"></script> -->
-<!-- Error message --> 
-  <!-- bg-transparent -->
-  <!-- toggle : Toggle between adding and removing a class name from an element with JavaScript. -->
-<!-- <section id="flash" class="bg-danger opacity py-4 text-info">Error</section>
-    
 
-<div class="container text-center">         
-        Add an icon -->
-        <!-- <h1 class="bg-light py-4 text-info"> <i class="fas fa-crutch"></i>CRUD with Javascrip API</h1>
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <form class="w-10"> -->
-            <!-- ID value can not be changed by user -->
-            <!-- <input type="text" id="user-id" class="from-control" readonly placeholder="ID" autocomplete="off"><br>
-            <input type="text" id="proname" class="from-control" placeholder="Product Name" autocomplete="off">
-            <div class="row">
-                <div class="col">
-                    <input type="text" id="seller" class="from-control m-0" placeholder="Seller" autocomplete="off">
-                </div>
-                <div class="col">
-                    <input type="text" id="price" class="from-control m-0" placeholder="Price" autocomplete="off">
-                </div>
-            </div> 
-        </form>
-    </div> -->
-<!-- Create, update , delete , read buttons -->
-
-<!-- <div class="d-flex justify-content-center">
-    <button class="btn btn-success" id= "btn-create" >Create</button>
-    <button class="btn btn-primary" id="btn-read">Read</button>
-    <button class="btn btn-warning" id="btn-update">Update</button>
-    <button class="btn btn-danger" id="btn-delete">Delete</button>
-</div>
-
-<div class="container d-flex">
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Seller</th>
-            <th scope="col">Price</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-           </tr> -->
-        <!-- </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td> --> 
-            <!-- Create  Edit icon -->
-            <!-- <td><i class="fas fa-edit btnedit"></i></td> 
-            <td><i class="fas fa-trash-alt btndelete"></i></td>
-          </tr>
-          <tr> -->
-            <!-- <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td><i class="fas fa-edit btnedit"></i></td>
-            <td><i class="fas fa-trash-alt btndelete"></i></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th> -->
-            <!-- <td colspan="2">Larry the Bird</td> -->
-            <!-- <td>Larry the Bird</td>
-            <td>Michel</td>
-            <td>@twitter</td>
-            <td><i class="fas fa-edit btnedit"></i></td>
-            <td><i class="fas fa-trash-alt btndelete"></i></td>
-          </tr>
-        </tbody>
-      </table>
-</div> -->
-
-<!-- <section>
-  <h6>Customers</h6>
-  <form id="customer-list" class="">
-    <input type="text" id ="input"class="">
-    <input type="submit" class="">
-  </form>
-  <ul id="list" class="">
-     <li><a href="#" target="_blank"></a></li>
-    <li><a href="#" target="_blank"></a></li>
-    <li><a href="#" target="_blank"></a></li> -->
-  <!-- </ul>
-</section> --> 
   
 
 
