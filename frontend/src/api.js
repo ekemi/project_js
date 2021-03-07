@@ -20,7 +20,12 @@ class Api {
 
     static baseUrl = 'http://localhost:3000';
     static CHORES_URL =`${Api.baseUrl}/orders`
-    
+    static HOUSE_HOLD_URL = `${Api.baseUrl}/customers`
+
+        static fetchChores() {
+        return fetch(Api.baseUrl + '/orders')
+            .then(parseJSON)
+    }
     static fetchCustomers(){
         return fetch(Api.baseUrl + '/customers')
             .then(parseJSON)

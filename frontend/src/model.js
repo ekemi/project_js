@@ -1,7 +1,7 @@
 class Customer {
 
     static all = [] 
-    constructor(id, name ) {
+    constructor(name, id ) {
         this.id = id;
         this.name=name;
         this.orders = []
@@ -13,14 +13,13 @@ class Customer {
         let c = new Order(order.product_name, 
             order.seller,
             order.price, 
-            order.status,
             order.id)
         this.orders.push(c)
     }
 
     
 
-    renderChores() {
+    renderOrders() {
         let familySortedChores = this.orders.sort((a,b)=>(a.product_name > b.product_name) ? 1 : -1)
         familySortedChores.forEach(choreObj => {
             choreObj.render()
@@ -30,7 +29,7 @@ class Customer {
     static postHouseHold(houseHoldObj) {
         
         let formData = {
-            "name": houseHoldObj.name.value,
+            "name": houseHoldObj.name.value
         }
      
         let configObj = {
@@ -39,7 +38,7 @@ class Customer {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body:JSON.stringify(formData)
         }
 
         return fetch(Api.HOUSE_HOLD_URL, configObj)
@@ -51,17 +50,20 @@ class Customer {
             .then(clearNewHouseForm)
             .then(clearFamilyDD)
             .then(clearNewChore)
-            .then(HouseHold.renderDropDownOptions)
-            .then(HouseHold.renderHouseHolds)
+            .then(Customer.renderDropDownOptions)
+            .then(Customer.renderCustomers)
 
     }
     
     
     static renderDropDownOptions(){
         Customer.all.forEach(customer => {
+// console.log(customer )
+// debugger
             let option = document.createElement('option')
-            option.setAttribute('value', customer.id)
+             option.setAttribute('value', customer.id)
             let customer_name = document.createTextNode(customer.name)
+            
             option.appendChild(customer_name)
             selectHouseHold.appendChild(option)
         })
@@ -85,7 +87,7 @@ class Customer {
 class Order {
     static all = []
 
-    constructor(product_name, price , seller  , status="Not delivered",id){
+    constructor(product_name, price , seller,id){
         this.product_name=product_name;
         this.seller=seller;
         this.price =price
@@ -96,11 +98,10 @@ class Order {
     static postChore(orderData) {
 
         let formData = {
-            "product_name": orderData.name.value,
-            "seller": orderData.name.value,
-            "price":orderData.name.value,
-            "status": choreData.status = "Not delivered",
-            'customer_id': orderData.querySelector('select').value
+            "product_name": orderData.product_name.value,
+            "seller": orderData.seller.value,
+            "price":orderData.price.value,
+            'customer_id':orderData.querySelector('select').value
         }
         
     
@@ -112,14 +113,16 @@ class Order {
             },
             body: JSON.stringify(formData)
         }
+        debugger
         return fetch(Api.CHORES_URL, configObj)
             .then(response => response.json())
             .then((choreObj) => {
-                let houseHold = HouseHold.all.find(chosenFamily => choreObj.house_hold_id == chosenFamily.id)
-                let newObj = new Order(choreObj.name, choreObj.status, choreObj.id)
+                let houseHold = Customer.all.find(chosenFamily => choreObj.customer_id == chosenFamily.id)
+                let newObj = new Order(choreObj.product_name,choreObj.seller,choreObj.price, choreObj.id)
                 houseHold.orders.push(newObj)
-                clearChoreDivs()
-                houseHold.renderChores()
+                clearOrderDivs()
+                houseHold.renderOrders()
+    
                 clearForm() 
             })
         
@@ -134,16 +137,16 @@ class Order {
             h6.innerHTML = `<strong>${this.product_name}</strong>`
 
             let h5 = document.createElement('h5')
-            h5.innerHTML = `<strong>${this.price}</strong>`
+            h5.innerHTML = `<strong>${this.seller}</strong>`
             
             let h4 = document.createElement('h4')
-            h4.innerHTML = `<strong>${this.seller}</strong>`
+            h4.innerHTML = `<strong>${this.price}</strong>`
             
-            let h3 = document.createElement('h3')
-            h3.innerHTML = '<em>Status: </em>'
-            let p = document.createElement('p')
-            p.setAttribute('class', 'chore-status')
-            p.innerHTML = `${this.status}`
+            // let h3 = document.createElement('h3')
+            // h3.innerHTML = '<em>Status: </em>'
+            // let p = document.createElement('p')
+            // p.setAttribute('class', 'chore-status')
+            // p.innerHTML = `${this.status}`
 
 
             
@@ -158,14 +161,15 @@ class Order {
             
             // resetBtn.addEventListener('click', event => this.resetHandler(event, this))
             
-            if (p.innerHTML === 'Not delevered'){
-                p.style.color = 'red'
-                resetBtn.style.display = 'none'
-            } else {
-                p.style.color = 'green'
-                completeBtn.style.display = 'none'
-            }
-
+            // if (p.innerHTML === 'Not delevered'){
+            //     p.style.color = 'red'
+            //     resetBtn.style.display = 'none'
+            // } else {
+            //     p.style.color = 'green'
+            //     completeBtn.style.display = 'none'
+            // }
+             
+            //Delete order
             let deleteBtn = document.createElement('button')
             deleteBtn.setAttribute('class', 'delete-chore-btn')
             deleteBtn.innerText = 'Delete'
@@ -174,8 +178,8 @@ class Order {
             let divCard = document.createElement('div')
             divCard.setAttribute('class', 'card')
             divCard.setAttribute('id', `${this.id}`)
-            //resetBtn
-            divCard.append(h6, h5,h4,h3, p, completeBtn, deleteBtn)
+            //resetBtn //completeBtn
+            divCard.append(h6, h5,h4, deleteBtn)
             orderCollection.append(divCard)
         }
     
@@ -206,33 +210,35 @@ class Order {
             })
         }
 
-        completeChoreHandler() {
-            let cardIns = event.target.parentNode
-            cardIns.querySelector('.reset-chore-button').style.display = 'block'
-            event.preventDefault()
+
+
+        // completeChoreHandler() {
+        //     let cardIns = event.target.parentNode
+        //     cardIns.querySelector('.reset-chore-button').style.display = 'block'
+        //     event.preventDefault()
         
-            let toggleResetBtn = event.target.style.display = 'none'
+        //     let toggleResetBtn = event.target.style.display = 'none'
             
         
-            let statusUpdate = event.target.previousElementSibling
-            statusUpdate.innerHTML = `Delivered!`
-            statusUpdate.style.color = 'green'
+        //     let statusUpdate = event.target.previousElementSibling
+        //     statusUpdate.innerHTML = `Delivered!`
+        //     statusUpdate.style.color = 'green'
         
-            fetch(`${Api.CHORES_URL}/${this.id}`, {
-                method: "PATCH",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'status': statusUpdate.textContent
-                })
-            })
-            .then(parseJSON)
-            .then(newStatus => {
-                statusUpdate
-            })
-        }
+        //     fetch(`${Api.CHORES_URL}/${this.id}`, {
+        //         method: "PATCH",
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             'status': statusUpdate.textContent
+        //         })
+        //     })
+        //     .then(parseJSON)
+        //     .then(newStatus => {
+        //         statusUpdate
+        //     })
+        // }
 
         resetHandler() {
             let resetStatus = event.target.previousElementSibling.previousElementSibling

@@ -3,12 +3,12 @@ html {
   }
 
   body {
-      background-image: linear-gradient(to right, steelblue, grey);
+      background-color:  grey;
   }
  
 
 .container {
-  box-shadow: 3px 4px skyblue;
+  /* box-shadow: 3px 4px skyblue; */
   border-radius: 6px 16px;
   padding: 1rem;
   width: 420px;
@@ -17,7 +17,7 @@ html {
   background: whitesmoke;
   opacity: .8;
   margin: 1rem 2rem;
-  text-shadow: 1px .5px skyblue;
+  /* text-shadow: 1px .5px skyblue; */
   color: darkslategray;
   font-family: Georgia, serif;
   }
@@ -26,13 +26,13 @@ html {
   border-radius: 6px 16px;
   padding: 1rem;
   width: 420px;
-  height: auto;
+  /* height: auto; */
   display: none;
   background: whitesmoke;
   opacity: .8;
-  box-shadow: 3px 4px skyblue;
+  /* box-shadow: 3px 4px skyblue; */
   margin: 1rem 2rem;
-  text-shadow: 1px .5px skyblue;
+  /* text-shadow: 1px .5px skyblue; */
   color: darkslategray;
   font-family: Georgia, serif;
  } 
@@ -45,9 +45,9 @@ html {
   display: none;
   background: whitesmoke;
   opacity: .8;
-  box-shadow: 3px 4px skyblue;
+  /* box-shadow: 3px 4px skyblue; */
   margin: 1rem 2rem;
-  text-shadow: .5px .5px skyblue;
+  /* text-shadow: .5px .5px skyblue; */
   color: darkslategray;
   font-family: Georgia, serif;
  }
@@ -61,7 +61,7 @@ html {
     height: auto;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 3px 4px skyblue;
+    /* box-shadow: 3px 4px skyblue; */
     background-color: whitesmoke;
     font-family: Georgia, serif;
   }
@@ -130,7 +130,7 @@ html {
     width: auto;
     border: #9494b8;
     background: whitesmoke;
-    box-shadow: 3px 4px skyblue;
+    /* box-shadow: 3px 4px skyblue; */
     padding: 12px 28px;
     margin-left: 50px;
     margin-top: 15px;
@@ -170,7 +170,7 @@ html {
     border: #9494b8;
     border: 2px;
     background: whitesmoke;
-    box-shadow: 3px 4px skyblue;
+    /* box-shadow: 3px 4px skyblue; */
     padding: 12px 28px;
     margin-left: 50px;
     margin-top: 20px;
@@ -181,7 +181,7 @@ html {
 
   #tag-line {
     text-align: center;
-    text-shadow: 2px 2px navy;
+    /* text-shadow: 2px 2px navy; */
     color: aqua;
     font-family: Georgia, serif;
     opacity: .5;
@@ -190,7 +190,7 @@ html {
 
   #family-chore-list {
     text-align: center;
-    text-shadow: 2px 2px navy;
+    /* text-shadow: 2px 2px navy; */
     color: aqua;
     font-family: Georgia, serif;
     opacity: .5;
