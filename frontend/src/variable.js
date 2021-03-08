@@ -24,6 +24,6 @@ const addBtn = document.getElementById('new-chore-btn')
 const selectForm = document.querySelector('.family-selector')
 
 let selectCustomer = false
-let addHouseHold = false
+let addCustomer = false
 let addChore = false 
 

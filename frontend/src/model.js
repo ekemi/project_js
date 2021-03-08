@@ -26,10 +26,10 @@ class Customer {
         })
     }
 
-    static postHouseHold(houseHoldObj) {
+    static postCustomer(customerdObj) {
         
         let formData = {
-            "name": houseHoldObj.name.value
+            "name": customerdObj.name.value
         }
      
         let configObj = {
@@ -43,9 +43,9 @@ class Customer {
 
         return fetch(Api.HOUSE_HOLD_URL, configObj)
             .then(response => response.json())
-            .then(houseHoldObj => {
-                let newHouseObj = new Customer(houseHoldObj.name, houseHoldObj.id)
-                return newHouseObj
+            .then(customerdObj => {
+                let newcusObj = new Customer(customerObj.name, customerdObj.id)
+                return newcusObj
             })
             .then(clearNewHouseForm)
             .then(clearFamilyDD)
@@ -150,10 +150,10 @@ class Order {
 
 
             
-            let completeBtn = document.createElement('button')
-            completeBtn.setAttribute('class', 'complete-btn')
-            completeBtn.innerText = 'Complete!'
-            completeBtn.addEventListener('click', event => this.completeChoreHandler(event, this))
+            // let completeBtn = document.createElement('button')
+            // completeBtn.setAttribute('class', 'complete-btn')
+            // completeBtn.innerText = 'Complete!'
+            // completeBtn.addEventListener('click', event => this.completeChoreHandler(event, this))
             
             // let resetBtn = document.createElement('button')
             // resetBtn.setAttribute('class', 'reset-chore-button')
@@ -240,33 +240,33 @@ class Order {
         //     })
         // }
 
-        resetHandler() {
-            let resetStatus = event.target.previousElementSibling.previousElementSibling
-            resetStatus.innerHTML = 'Not delevered'
-            resetStatus.style.color = 'red'
+        // resetHandler() {
+        //     let resetStatus = event.target.previousElementSibling.previousElementSibling
+        //     resetStatus.innerHTML = 'Not delevered'
+        //     resetStatus.style.color = 'red'
         
-            let toggleCompleteBtn = event.target.previousElementSibling
-            toggleCompleteBtn.style.display = 'block'
+        //     let toggleCompleteBtn = event.target.previousElementSibling
+        //     toggleCompleteBtn.style.display = 'block'
         
-            let toggleResetBtn = event.target.style.display = 'none'
-            event.preventDefault()
+        //     let toggleResetBtn = event.target.style.display = 'none'
+        //     event.preventDefault()
         
-            fetch(`${Api.CHORES_URL}/${this.id}`, {
-                method: "PATCH",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'status': resetStatus.textContent
-                })
-            })
-            .then(parseJSON)
-            .then(newStatus => {
-                resetStatus
-            })
+        //     fetch(`${Api.CHORES_URL}/${this.id}`, {
+        //         method: "PATCH",
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             'status': resetStatus.textContent
+        //         })
+        //     })
+        //     .then(parseJSON)
+        //     .then(newStatus => {
+        //         resetStatus
+        //     })
             
-        }
+        // }
 
 
         

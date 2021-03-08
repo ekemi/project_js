@@ -24,13 +24,13 @@ function clearNewChore() {
 
 //2ieme
 addHouseHoldBtn.addEventListener('click', () => {
-    addHouseHold =!addHouseHold
-    if (addHouseHold){
+    addCustomer =!addCustomer
+    if (addCustomer){
         addHouseHoldBtn.textContent = "Close"
         housePopUp.style.display = 'block'
         housePopUp.addEventListener('submit', e => {
             e.preventDefault()
-            Customer.postHouseHold(e.target)
+            Customer.postCustomer(e.target)
        })
     } else {
         addHouseHoldBtn.textContent ="Add a New Customer!"
@@ -54,7 +54,7 @@ addHouseHoldBtn.addEventListener('click', () => {
              chosenCustomer.renderOrders()
          })
      } else { 
-         selectHouseHoldBtn.textContent = "Select Your Family"
+         selectHouseHoldBtn.textContent = "Select Your Customer"
          selectForm.style.display = 'none'
      }
  }) 
@@ -86,17 +86,21 @@ addBtn.addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", () => {
     Api.fetchCustomers().then(customers => {
         customers.forEach(customer => {
+           // console.log(customers)
             let cus = new Customer(customer.name, customer.id)
             customer.orders.forEach(order => {
+                console.log(customer.orders)
                 //find it to customer class
             cus.addOrder(order)
             })
         })
     Customer.renderCustomers()
-    Customer.renderDropDownOptions()
+    // Top dropdown
+     Customer.renderDropDownOptions()
     })
     //I did add the word
     addBtn.textContent = 'Add a New Order'
+    // addBtn.onclick('click',)
     // I did add the word
     addHouseHoldBtn.textContent = "Add a New Customer"
     // I did add the word
